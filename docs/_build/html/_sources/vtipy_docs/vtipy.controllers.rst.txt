@@ -1,0 +1,30 @@
+vtipy.controllers package
+=========================
+
+Submodules
+----------
+
+vtipy.controllers.impedance module
+----------------------------------
+
+.. automodule:: vtipy.controllers.impedance
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+vtipy.controllers.temperature module
+------------------------------------
+
+.. automodule:: vtipy.controllers.temperature
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: vtipy.controllers
+    :members:
+    :undoc-members:
+    :show-inheritance:

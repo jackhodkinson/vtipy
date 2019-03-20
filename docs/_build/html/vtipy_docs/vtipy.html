@@ -1,0 +1,311 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>vtipy package &#8212; vtipy 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="vtipy" href="modules.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="vtipy-package">
+<h1>vtipy package<a class="headerlink" href="#vtipy-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-vtipy.helpers">
+<span id="vtipy-helpers-module"></span><h2>vtipy.helpers module<a class="headerlink" href="#module-vtipy.helpers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="vtipy.helpers.start">
+<code class="descclassname">vtipy.helpers.</code><code class="descname">start</code><span class="sig-paren">(</span><em>measure_times='measurement_times.txt'</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.helpers.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function writes a new file called ‘measurement_times.txt’ into
+the working directory. A header is writen into the file with the
+startime of the experiment.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-vtipy.impedance">
+<span id="vtipy-impedance-module"></span><h2>vtipy.impedance module<a class="headerlink" href="#module-vtipy.impedance" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="vtipy.impedance.solartron1260">
+<em class="property">class </em><code class="descclassname">vtipy.impedance.</code><code class="descname">solartron1260</code><span class="sig-paren">(</span><em>Vac=0.5</em>, <em>Vdc=0.0</em>, <em>integration_time=1</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.impedance.solartron1260" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Gpib.Gpib.Gpib</span></code></p>
+<p>This object controlls the Solartron 1260</p>
+<p>Here is a description of how it works:</p>
+<blockquote>
+<div>TODO: add more description here.</div></blockquote>
+<dl class="method">
+<dt id="vtipy.impedance.solartron1260.measure_frequency">
+<code class="descname">measure_frequency</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.impedance.solartron1260.measure_frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function measures the impedance at a given frequency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>frequency</strong> (<em>float</em>) – frequency for measurement.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>result</strong> – Impedance data formated as a comma separated
+string. The first three values (frequency, magnitude, and the
+argument) are the important values that need to be saved.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.impedance.solartron1260.measure_impedance">
+<code class="descname">measure_impedance</code><span class="sig-paren">(</span><em>scan_number</em>, <em>filename=None</em>, <em>fmin=0.05</em>, <em>fmax=9800000.0</em>, <em>ppd=20</em>, <em>Tset=None</em>, <em>Tcell=None</em>, <em>scan_label=None</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.impedance.solartron1260.measure_impedance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes the solartron1260.measure_impedance_process method as a
+subprocess as to allow a main control script to continue to monitor
+temperature while this runs in parallel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scan_number</strong> (<em>int</em>) – indicates order of scan measurement.</li>
+<li><strong>(</strong><strong>None/string</strong> (<em>filename</em>) – name of file in which impedance data is
+stored. If left as None it will be assigned a name based on the
+scan number: “scan_{}.txt”.format(scan_number), however, it may
+be set to something else to distinguish it from a typical scan.</li>
+<li><strong>fmin</strong> (<em>float</em>) – minimum frquency for sweep. Default is 0.05.</li>
+<li><strong>fmax</strong> (<em>float</em>) – max frequency for sweep. Default is 9.8e6.</li>
+<li><strong>ppd</strong> (<em>int</em>) – points per decade. Default is 20.</li>
+<li><strong>Tset</strong> (<em>int</em><em>, </em><em>optional</em>) – Setpoint temperature from the Eurotherm. If set
+it is stored in the header of the datafile. It should be set
+during variable temperature experiments.</li>
+<li><strong>Tcell</strong> (<em>int</em><em>, </em><em>optional</em>) – Set this to the “cell temperature” as measured as
+measured by the MAX31855 thermocouple.</li>
+<li><strong>scan_label</strong> (<em>string</em><em>, </em><em>optional</em>) – Optional label to provide extra meta-data
+for later analysis. Typically this is set to “up” or “down” to
+distinguish measurements during an upward or downward
+tempeature sweep.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.impedance.solartron1260.measure_impedance_process">
+<code class="descname">measure_impedance_process</code><span class="sig-paren">(</span><em>scan_number</em>, <em>filename</em>, <em>fmin</em>, <em>fmax</em>, <em>ppd</em>, <em>Tset</em>, <em>Tcell</em>, <em>scan_label</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.impedance.solartron1260.measure_impedance_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instructs the solartron to measure the impedance over a range of
+frequencies. In a main control script this method is called by the
+solartron1260.measure_impedance method as a subprocess to allow the
+main control script to continue to measure the temperature while the
+impedance scan is executed in parallel.</p>
+<p>For the deffinitions of the arguments please see the docs for the
+solartron1260.measure_impedance method. The arguments are identical and
+are passed from that method into this.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scan_number</strong> (<em>int</em>) – indicates order of scan measurement.</li>
+<li><strong>filename</strong> (<em>string</em><em>, </em><em>optional</em>) – name of file in which impedance data is
+stored. If left as None it will be assigned a name based on the
+scan number: “scan_{}.txt”.format(scan_number), however, it may
+be set to something else to distinguish it from a typical scan.</li>
+<li><strong>fmin</strong> (<em>float</em>) – minimum frquency for sweep. Default is 0.05.</li>
+<li><strong>fmax</strong> (<em>float</em>) – max frequency for sweep. Default is 9.8e6.</li>
+<li><strong>ppd</strong> (<em>int</em>) – points per decade. Default is 20.</li>
+<li><strong>Tset</strong> (<em>int</em>) – Setpoint temperature from the Eurotherm. If set
+it is stored in the header of the datafile. It should be set
+during variable temperature experiments.</li>
+<li><strong>Tcell</strong> (<em>int</em>) – Set this to the “cell temperature” as measured as
+measured by the MAX31855 thermocouple.</li>
+<li><strong>scan_label</strong> (<em>string</em>) – Optional label to provide extra meta-data
+for later analysis. Typically this is set to “up” or “down” to
+distinguish measurements during an upward or downward
+tempeature sweep.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.impedance.solartron1260.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.impedance.solartron1260.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a message to the solartron. Just like the Gpib.Gpib.write except
+a 0.02 s sleep time is applied to prevent too many signals being sent
+at the same time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>msg</strong> (<em>string</em>) – message to send the solartron. This should be one
+of the instructions from the instruction set found in the
+solartron manual.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-vtipy.temperature">
+<span id="vtipy-temperature-module"></span><h2>vtipy.temperature module<a class="headerlink" href="#module-vtipy.temperature" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="vtipy.temperature.temperature_controllers">
+<em class="property">class </em><code class="descclassname">vtipy.temperature.</code><code class="descname">temperature_controllers</code><span class="sig-paren">(</span><em>filename</em>, <em>serial_usb_port</em>, <em>addr=1</em>, <em>CLK=25</em>, <em>CS=24</em>, <em>DO=18</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.temperature.temperature_controllers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">minimalmodbus.Instrument</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Adafruit_MAX31855.MAX31855.MAX31855</span></code></p>
+<p>This class controlls both the MAX31855 and the Eurotherm 3216.</p>
+<p>Methods are defined to allow measurement and recording of the temperature
+from the Eurotherm and the MAX31855 as well as to change the setpoint
+tempreature of the Eurotherm controller.</p>
+<p>This control is acomplished by inheretance from the
+minimalmodbus.Instrument and MAX31855.MAX31855 classes.</p>
+<dl class="method">
+<dt id="vtipy.temperature.temperature_controllers.hold">
+<code class="descname">hold</code><span class="sig-paren">(</span><em>hold_time</em>, <em>temp_resolution=2</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.temperature.temperature_controllers.hold" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function waits for the specified hold_time and makes
+temperature measurements at the specified temp_resolution.
+Specifieds temperature measurements per minute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.temperature.temperature_controllers.measure_temperatures">
+<code class="descname">measure_temperatures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.temperature.temperature_controllers.measure_temperatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method serves two purposes:</p>
+<ol class="arabic simple">
+<li>Measures the cell and furnace temperature.</li>
+<li><dl class="first docutils">
+<dt>Records time since the initial temperature measurement (dt), the</dt>
+<dd>setpoint temperature from the Eurotherm (Tsetpoint)</dd>
+</dl>
+</li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.temperature.temperature_controllers.ramp_temperature">
+<code class="descname">ramp_temperature</code><span class="sig-paren">(</span><em>Tset</em>, <em>ramp_time=1</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.temperature.temperature_controllers.ramp_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>method description</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.temperature.temperature_controllers.read_process_temperature">
+<code class="descname">read_process_temperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.temperature.temperature_controllers.read_process_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the  furnace temperature from the Eurotherm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.temperature.temperature_controllers.read_setpoint">
+<code class="descname">read_setpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.temperature.temperature_controllers.read_setpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the setpoint temperature from the Eurotherm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="vtipy.temperature.temperature_controllers.set_setpoint">
+<code class="descname">set_setpoint</code><span class="sig-paren">(</span><em>Tset</em><span class="sig-paren">)</span><a class="headerlink" href="#vtipy.temperature.temperature_controllers.set_setpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the setpoint temperature of the Eurotherm</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-vtipy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-vtipy" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">vtipy package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-vtipy.helpers">vtipy.helpers module</a></li>
+<li><a class="reference internal" href="#module-vtipy.impedance">vtipy.impedance module</a></li>
+<li><a class="reference internal" href="#module-vtipy.temperature">vtipy.temperature module</a></li>
+<li><a class="reference internal" href="#module-vtipy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">vtipy</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">vtipy</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/vtipy_docs/vtipy.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Jack Hodkinson.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/vtipy_docs/vtipy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

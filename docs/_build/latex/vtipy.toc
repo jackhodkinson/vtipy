@@ -1,0 +1,8 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}vtipy package}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}vtipy.impedance module}{1}{section.1.1}
+\contentsline {paragraph}{Example}{1}{paragraph*.4}
+\contentsline {section}{\numberline {1.2}vtipy.temperature module}{3}{section.1.2}
+\contentsline {paragraph}{Example}{3}{paragraph*.10}
+\contentsline {chapter}{Python Module Index}{5}{section*.17}
+\contentsline {chapter}{Index}{7}{section*.18}
